@@ -1,0 +1,9 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+blog/static/blog/images
+blog/static/blog/node_modules
+
+# pyenv
+.python-version

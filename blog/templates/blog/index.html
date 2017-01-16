@@ -1,1 +1,11 @@
-<h1>Test Index</h1>
+
+{% extends "blog/base.html" %}
+
+{% block main %} 
+	{% include "blog/globals.html" %}
+    <div class="container-fluid" id="app" ></div>
+    <script>console.log(GLOBALS);</script>
+	{% load static %}
+	<script src="{% static  'blog/js/bundle/bundle.js' %}"></script>
+
+{% endblock %}
