@@ -3,9 +3,12 @@
 
 {% block main %} 
 	{% include "blog/globals.html" %}
-    <div class="container-fluid" id="app" ></div>
-    <script>console.log(GLOBALS);</script>
+
+    <div class="container-fluid">	
+    	<div id="app" ></div>
+    </div>
+
 	{% load static %}
 	<script src="{% static  'blog/js/bundle/bundle.js' %}"></script>
-
+	<link rel="stylesheet" href="{% static  'blog/css/index.css' %}">
 {% endblock %}

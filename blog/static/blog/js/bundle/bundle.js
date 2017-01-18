@@ -63,9 +63,7 @@
 	
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 	
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } //./node_modules/.bin/webpack -d --display-error-details
-	
-	var test = "AAA";
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	
 	var App = function (_React$Component) {
 		_inherits(App, _React$Component);
@@ -81,8 +79,57 @@
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					null,
-					_react2.default.createElement(Navbar, null)
+					{ className: 'container-fluid' },
+					_react2.default.createElement('div', { className: 'row' }),
+					_react2.default.createElement(
+						'div',
+						{ className: 'row' },
+						_react2.default.createElement(
+							'div',
+							{ className: 'col-md-3' },
+							_react2.default.createElement(ArticleList, { info: this.props.articles })
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'col-md-7' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'container-fluid' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'row' },
+									_react2.default.createElement(Navbar, null)
+								),
+								_react2.default.createElement(
+									'div',
+									{ className: 'row' },
+									_react2.default.createElement(BlogPage, null)
+								)
+							)
+						),
+						_react2.default.createElement(
+							'div',
+							{ className: 'col-md-2' },
+							_react2.default.createElement(
+								'div',
+								{ className: 'row' },
+								_react2.default.createElement(
+									'div',
+									{ className: 'panel panel-default side-panel' },
+									_react2.default.createElement(
+										'div',
+										{ className: 'panel-heading' },
+										'FEATURED'
+									),
+									_react2.default.createElement(
+										'div',
+										{ className: 'panel-body' },
+										_react2.default.createElement('ul', { className: 'nav nav-pills nav-stacked' })
+									)
+								)
+							)
+						)
+					)
 				);
 			}
 		}]);
@@ -90,8 +137,95 @@
 		return App;
 	}(_react2.default.Component);
 	
-	var Navbar = function (_React$Component2) {
-		_inherits(Navbar, _React$Component2);
+	var ArticleList = function (_React$Component2) {
+		_inherits(ArticleList, _React$Component2);
+	
+		function ArticleList() {
+			_classCallCheck(this, ArticleList);
+	
+			return _possibleConstructorReturn(this, (ArticleList.__proto__ || Object.getPrototypeOf(ArticleList)).apply(this, arguments));
+		}
+	
+		_createClass(ArticleList, [{
+			key: 'render',
+			value: function render() {
+				var articleLinkElement = this.props.info.map(function (article) {
+					return _react2.default.createElement(ArticleLink, { info: article, key: article.id });
+				});
+	
+				return _react2.default.createElement(
+					'div',
+					{ className: 'panel panel-default side-panel' },
+					_react2.default.createElement(
+						'div',
+						{ className: 'panel-heading' },
+						'ARTICLES'
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'panel-body' },
+						_react2.default.createElement(
+							'ul',
+							{ className: 'nav nav-pills nav-stacked' },
+							articleLinkElement
+						)
+					)
+				);
+			}
+		}]);
+	
+		return ArticleList;
+	}(_react2.default.Component);
+	
+	function ArticleLink(props) {
+		return _react2.default.createElement(
+			'li',
+			{ role: 'presentation' },
+			_react2.default.createElement(
+				'a',
+				{ href: props.info.id },
+				props.info.title
+			)
+		);
+	}
+	
+	var BlogPage = function (_React$Component3) {
+		_inherits(BlogPage, _React$Component3);
+	
+		function BlogPage() {
+			_classCallCheck(this, BlogPage);
+	
+			return _possibleConstructorReturn(this, (BlogPage.__proto__ || Object.getPrototypeOf(BlogPage)).apply(this, arguments));
+		}
+	
+		_createClass(BlogPage, [{
+			key: 'render',
+			value: function render() {
+				return _react2.default.createElement(
+					'p',
+					null,
+					'Placeholder'
+				);
+			}
+		}]);
+	
+		return BlogPage;
+	}(_react2.default.Component);
+	
+	function Paragraph(props) {
+		return _react2.default.createElement(
+			'p',
+			null,
+			props.value
+		);
+	}
+	
+	function Image(props) {
+		return _react2.default.createElement('img', { src: props.src });
+	}
+	
+	var Navbar = function (_React$Component4) {
+		_inherits(Navbar, _React$Component4);
 	
 		function Navbar() {
 			_classCallCheck(this, Navbar);
@@ -104,17 +238,56 @@
 			value: function render() {
 				return _react2.default.createElement(
 					'nav',
-					{ className: 'navbar navbar-default' },
+					{ className: 'navbar navbar-inverse navbar-default' },
 					_react2.default.createElement(
 						'div',
-						{ className: 'container-fluid' },
+						{ className: 'navbar-header' },
 						_react2.default.createElement(
-							'div',
-							{ className: 'navbar-header' },
+							'button',
+							{ type: 'button', className: 'navbar-toggle collapsed', 'data-toggle': 'collapse', 'data-target': '#bs-example-navbar-collapse-1', 'aria-expanded': 'false' },
 							_react2.default.createElement(
-								'a',
-								{ className: 'navbar-brand', href: '#' },
-								_react2.default.createElement('img', { alt: GLOBALS.CUSTOMS.BloggerFirstName, src: '' })
+								'span',
+								{ className: 'sr-only' },
+								'Toggle navigation'
+							),
+							_react2.default.createElement('span', { className: 'icon-bar' }),
+							_react2.default.createElement('span', { className: 'icon-bar' }),
+							_react2.default.createElement('span', { className: 'icon-bar' })
+						),
+						_react2.default.createElement(
+							'a',
+							{ className: 'navbar-brand', href: '#' },
+							_react2.default.createElement('img', { alt: GLOBALS.CUSTOMS.BloggerFirstName, src: '' })
+						)
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'collapse navbar-collapse', id: 'bs-example-navbar-collapse-1' },
+						_react2.default.createElement(
+							'ul',
+							{ className: 'nav navbar-nav' },
+							_react2.default.createElement(
+								'li',
+								null,
+								_react2.default.createElement(
+									'a',
+									{ href: '#' },
+									'Home ',
+									_react2.default.createElement(
+										'span',
+										{ className: 'sr-only' },
+										'(current)'
+									)
+								)
+							),
+							_react2.default.createElement(
+								'li',
+								{ className: 'active' },
+								_react2.default.createElement(
+									'a',
+									{ href: '#' },
+									'Blog'
+								)
 							)
 						)
 					)
@@ -125,7 +298,10 @@
 		return Navbar;
 	}(_react2.default.Component);
 	
-	(0, _reactDom.render)(_react2.default.createElement(App, null), document.getElementById('app'));
+	(function () {
+		var info = [{ "title": "title1", "id": "#test1" }, { "title": "title2", "id": "#test2" }];
+		(0, _reactDom.render)(_react2.default.createElement(App, { articles: info }), document.getElementById('app'));
+	})();
 
 /***/ },
 /* 1 */

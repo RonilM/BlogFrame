@@ -1,0 +1,13 @@
+.side-panel {
+
+	height: 100vh;
+	margin: 2px;
+
+}
+
+.side-panel > .panel-heading {
+	color: white;
+	background-color: #333;
+	text-align: center;
+}
+
